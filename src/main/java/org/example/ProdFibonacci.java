@@ -15,12 +15,29 @@ public class ProdFibonacci {
                 return new long[] {fibonacci(nFibonacci), fibonacci(nFibonacci+1), 1};
             }
             nFibonacci++;
-            System.out.println(currentProduct);
+            //System.out.println(currentProduct);
         }
         return new long[] {fibonacci(nFibonacci-1), fibonacci(nFibonacci), 0};
     }
 
     private static long fibonacci(long nFibonacci) {
+        long fn1 = 1;
+        long fn2 = 0;
+        long current = 1;
+        if(nFibonacci == 0) {
+            return 0;
+        } else if (nFibonacci == 1) {
+            return 1;
+        } else {
+            for (int i =2; i<nFibonacci+1; i++) {
+                current = fn2+fn1;
+                fn2 = fn1;
+                fn1 = current;
+            }
+            return current;
+        }
+    }
+    private static long rFibonacci(long nFibonacci) {
         if(nFibonacci==0) {
             return 0;
         } else if (nFibonacci==1) {
@@ -29,7 +46,4 @@ public class ProdFibonacci {
             return fibonacci(nFibonacci-2)+fibonacci(nFibonacci-1);
         }
     }
-//    private static long fibonacci(long nFibonacci) {
-//
-//    }
 }
